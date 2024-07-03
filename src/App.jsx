@@ -7,7 +7,7 @@ import AudioPlayer from './components/audioplayer/AudioPlayer';
 
 function App() {
   return (
-    <div className='flex flex-col pt-14 h-screen text-white overflow-y-auto bg-slate-950 max-md:pt-0'>
+    <div className='flex flex-col pt-10 h-screen text-white overflow-y-auto bg-slate-950 max-md:pt-0'>
       <Header />
       <main className='flex grow gap-5 w-full max-md:max-w-full max-md:flex-col-reverse max-md:justify-end'>
         <Sidebar />

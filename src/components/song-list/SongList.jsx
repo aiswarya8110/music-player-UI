@@ -6,10 +6,10 @@ const SongList = () => {
 const { songs } = useContext(SongContext);
 console.log("SONG LIST COMPONENT", songs);
   return (
-    <div className='flex flex-col gap-5'>
+    <div className='flex flex-col gap-5 pb-5'>
         {
             songs?.map((song, i)=>(
-                <SongCard songData={song}/>
+                <SongCard songData={song} key={song.id}/>
             ))
         }
     </div>
