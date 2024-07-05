@@ -7,7 +7,6 @@ export const SongContext = createContext();
 export const SongContextProvider = ({ children })=>{
     const [ state, dispatch ] = useReducer(reducer, initialState);
     const { songs, currentSongIndex, isPlaying, isMenuOpen } = state;
-    console.log(songs, currentSongIndex);
 
     const updateIsMenuOpen = ()=>{
       dispatch({type: UPDATE_IS_MENU_OPEN});
