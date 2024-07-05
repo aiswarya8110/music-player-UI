@@ -7,10 +7,10 @@ import Progressbar from '../progress-bar/Progressbar';
 import Player from '../player/Player';
 
 const AudioPlayer = () => {
-  const { songs, currentSongIndex, updateCurrentSongIndex, isPlaying, updateIsPlaying, updateIsMenuOpen, isMenuOpen } = useContext(SongContext);
+  const { originalSongs, currentSongIndex, updateCurrentSongIndex, isPlaying, updateIsPlaying, updateIsMenuOpen, isMenuOpen } = useContext(SongContext);
   const [ currentTime, setCurrentTime ] = useState(0);
   const audioRef = useRef();
-  const currentSong = songs[currentSongIndex];
+  const currentSong = originalSongs[currentSongIndex];
 
   useEffect(()=>{
     if(isPlaying){
@@ -42,7 +42,7 @@ const AudioPlayer = () => {
     let newCurrentSongIndex = currentSongIndex - 1;
 
     if(newCurrentSongIndex < 0){
-      newCurrentSongIndex = songs.length - 1;
+      newCurrentSongIndex = originalSongs.length - 1;
       return updateCurrentSongIndex(newCurrentSongIndex); 
     }
 
@@ -51,7 +51,7 @@ const AudioPlayer = () => {
 
   const setNextSong = ()=>{
     let newCurrentSongIndex = currentSongIndex + 1;
-    if(newCurrentSongIndex > songs.length - 1){
+    if(newCurrentSongIndex > originalSongs.length - 1){
       newCurrentSongIndex = 0;
 
       return updateCurrentSongIndex(newCurrentSongIndex);

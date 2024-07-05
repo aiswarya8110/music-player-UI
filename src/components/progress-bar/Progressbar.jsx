@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const Progressbar = ({ currentTime, audioRef }) => {
-    const [width, setWidth ] = useState(30);
+    const [width, setWidth ] = useState(0);
     const progressDiv = useRef();
-    console.log("Audio Duration", audioRef.current?.duration);
-    console.log("Current Time", currentTime);
     useEffect(()=>{
-        console.log("setting width");
         setWidth((currentTime/audioRef.current?.duration || 0) * 100);
     },[currentTime])
 
