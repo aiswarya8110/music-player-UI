@@ -1,15 +1,19 @@
 import { createContext, useState, useEffect, useReducer } from "react";
 import { SONGS_API_URL } from "../constants/constants";
 import { initialState, reducer } from "../reducer/reducer";
-import { UPDATE_CURRENT_SONG_INDEX, UPDATE_IS_PLAYING, UPDATE_SONGS } from "../actions/actoins";
+import { UPDATE_CURRENT_SONG_INDEX, UPDATE_IS_MENU_OPEN, UPDATE_IS_PLAYING, UPDATE_SONGS } from "../actions/actoins";
 export const SongContext = createContext();
 
 export const SongContextProvider = ({ children })=>{
     const [ state, dispatch ] = useReducer(reducer, initialState);
-    const { songs, currentSongIndex, isPlaying } = state;
+    const { songs, currentSongIndex, isPlaying, isMenuOpen } = state;
     console.log(songs, currentSongIndex);
 
-    const updateIsPlaying = (isPlaying)=>{
+    const updateIsMenuOpen = ()=>{
+      dispatch({type: UPDATE_IS_MENU_OPEN});
+    }
+
+    const updateIsPlaying = ()=>{
       dispatch({type: UPDATE_IS_PLAYING})
     }
 
@@ -28,7 +32,7 @@ export const SongContextProvider = ({ children })=>{
         getSongs();
       },[])
     return (
-        <SongContext.Provider value={{songs, currentSongIndex, updateCurrentSongIndex, isPlaying, updateIsPlaying}}>
+        <SongContext.Provider value={{songs, currentSongIndex, updateCurrentSongIndex, isPlaying, updateIsPlaying, updateIsMenuOpen, isMenuOpen}}>
             {children}
         </SongContext.Provider>
     )

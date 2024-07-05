@@ -4,9 +4,11 @@ import { FaCirclePause } from "react-icons/fa6";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { SongContext } from '../../context/SongContext';
+import { RiMenu2Fill } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
 
 const AudioPlayer = () => {
-  const { songs, currentSongIndex, updateCurrentSongIndex, isPlaying, updateIsPlaying } = useContext(SongContext);
+  const { songs, currentSongIndex, updateCurrentSongIndex, isPlaying, updateIsPlaying, updateIsMenuOpen, isMenuOpen } = useContext(SongContext);
   const audioRef = useRef();
   const currentSong = songs[currentSongIndex];
   console.log("Current Song",currentSong);
@@ -59,6 +61,11 @@ const AudioPlayer = () => {
         {isPlaying ? <FaCirclePause onClick={pauseSong}/> : <FaCirclePlay onClick={playSong}/>}
         <TbPlayerTrackNextFilled onClick={setNextSong}/>
         <audio src={currentSong?.url} controls ref={audioRef}/>
+        <RiMenu2Fill className={`hidden text-green-500 transition-all max-md:${isMenuOpen ? 'hidden' : 'block'}`}
+        size='30px'
+        onClick={updateIsMenuOpen}
+        />
+        <IoClose className={`hidden transition-all text-green-500 max-md:${isMenuOpen ? 'block' : 'hidden'}`} size='30px' onClick={updateIsMenuOpen}/>
     </div>
   )
 }
