@@ -22,6 +22,11 @@ const AudioPlayer = () => {
     setCurrentTime(e.target.currentTime);
   }
 
+  const handleOnEnd = ()=>{
+    updateIsPlaying();
+    setCurrentTime(0);
+  }
+
   const pauseSong = ()=>{
     updateIsPlaying();
     audioRef.current.pause();
@@ -56,20 +61,32 @@ const AudioPlayer = () => {
   }
 
   return (
-    <div className='w-[40%] px-6 pl-10 pt-10 self-stretch max-md:w-full max-md:pl-6 max-md:pt-6'>
-        <audio src={currentSong?.url} ref={audioRef} onTimeUpdate={updateCurrentTime}/>
-        <Player 
-        currentSong={currentSong}/>
-        <Progressbar 
-        currentTime={currentTime} 
-        audioRef={audioRef}/>
-        <Controls 
-        isPlaying={isPlaying}
-        setNextSong={setNextSong}
-        setPrevSong={setPrevSong}
-        playSong={playSong}
-        pauseSong={pauseSong}
-        />
+    <div className='w-[40%] px-6 pl-10 pt-10 self-stretch max-md:w-full max-md:pl-6 max-md:pt-0'>
+        <audio src={currentSong?.url} ref={audioRef} onTimeUpdate={updateCurrentTime} onEnded={handleOnEnd}/>
+        <div className='flex flex-col gap-2 w-full max-md:max-w-full'>
+          <RiMenu2Fill 
+          className={`hidden self-end text-right text-green-500 transition-all duration-700 max-md:${isMenuOpen ? 'hidden' : 'block'}`}
+          size='30px'
+          onClick={updateIsMenuOpen}
+          />
+          <IoClose 
+          className={`hidden self-end text-right text-green-500 transition-all duration-700 max-md:${isMenuOpen ? 'block' : 'hidden'}`} 
+          size='30px' 
+          onClick={updateIsMenuOpen}
+          />
+          <Player 
+          currentSong={currentSong}/>
+          <Progressbar 
+          currentTime={currentTime} 
+          audioRef={audioRef}/>
+          <Controls 
+          isPlaying={isPlaying}
+          setNextSong={setNextSong}
+          setPrevSong={setPrevSong}
+          playSong={playSong}
+          pauseSong={pauseSong}
+          />
+        </div>
     </div>
   )
 }
