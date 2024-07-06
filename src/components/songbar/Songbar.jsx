@@ -3,6 +3,7 @@ import SongList from '../song-list/SongList'
 import { SongContext } from '../../context/SongContext'
 import { Bars } from 'react-loader-spinner'
 import Search from '../search/Search'
+import Tabs from '../tabs/Tabs'
 const Songbar = () => {
   const { originalSongs, isMenuOpen, updateFilteredSongs, filteredSongs, updateSearchedSongs } = useContext(SongContext);
   const [ selectedTab, setSelectedTab ] = useState(0);
@@ -29,28 +30,27 @@ const Songbar = () => {
   return (
     <div className={`flex flex-col w-[35%] px-6 max-md:w-full max-md:${isMenuOpen ? 'flex' : 'hidden'}`}>
         <div className='w-full flex flex-col grow gap-5 max-md:w-full'>
-            <ul className='flex gap-8 p-0 m-0 list-none text-lg font-semibold'>
-                <li className={`${selectedTab === 0 ? 'text-white ' : 'text-gray-400'}`}>
-                    <button onClick={updateToForYou} disabled={isLoading}>For You</button>
-                </li>
-                <li className={`${selectedTab === 1 ? 'text-white' : 'text-gray-400'}`}>
-                    <button onClick={updateToTopTracks} disabled={isLoading}>Top Tracks</button>
-                </li>
-            </ul>
+            <Tabs 
+            selectedTab={selectedTab}
+            updateToForYou={updateToForYou}
+            updateToTopTracks={updateToTopTracks}
+            isLoading={isLoading}
+            />
             <Search />
             <div className="flex flex-col grow w-full">
             {
-                    isLoading ? (
-                        <Bars 
-                        height="80"
-                        width="80"
-                        color="#4fa94d"
-                        ariaLabel="bars-loading"
-                        />
-                    ): (
-                        <SongList />
-                    )
-                }
+              isLoading ? (
+                <Bars 
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="bars-loading"
+                />
+                ):
+                (
+                  <SongList />
+                )
+            }
             </div>
         </div>
     </div>

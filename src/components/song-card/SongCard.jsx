@@ -13,7 +13,7 @@ const SongCard = ({ songData }) => {
             </div>
         </div>
         <div>
-            <p className='text-gray-400'>time</p>
+            <p className='text-gray-400'>00:00</p>
         </div>
     </div>
   )

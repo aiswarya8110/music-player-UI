@@ -10,7 +10,7 @@ const { searchedSongs } = useContext(SongContext);
           searchedSongs?.length === 0 ? (
             <p className='text-green-500 text-center'>No search results found</p>
           ): (
-              searchedSongs?.map((song, i)=>(
+              searchedSongs?.map((song)=>(
                 <SongCard songData={song} key={song.id}/>
             ))
           )
