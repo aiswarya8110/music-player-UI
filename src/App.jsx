@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import './App.css'
 import Header from './components/header/Header'
 import Sidebar from './components/sidebar/Sidebar';
@@ -8,9 +8,8 @@ import { SongContext } from './context/SongContext';
 
 function App() {
   const { originalSongs, currentSongIndex } = useContext(SongContext);
-  console.log("CURRENT SONG INDEX",currentSongIndex);
   const currentSong = originalSongs[currentSongIndex];
-  console.log(currentSong);
+
   return (
     <div className={`flex flex-col pt-10 h-screen text-white overflow-y-auto transition-all duration-1000 max-md:pt-0`} 
     style={{

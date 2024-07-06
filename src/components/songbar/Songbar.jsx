@@ -1,23 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { HiMagnifyingGlass } from "react-icons/hi2"
 import SongList from '../song-list/SongList'
 import { SongContext } from '../../context/SongContext'
 import { Bars } from 'react-loader-spinner'
+import Search from '../search/Search'
 const Songbar = () => {
-  const { originalSongs, isMenuOpen, updateFilteredSongs, filteredSongs } = useContext(SongContext);
+  const { originalSongs, isMenuOpen, updateFilteredSongs, filteredSongs, updateSearchedSongs } = useContext(SongContext);
   const [ selectedTab, setSelectedTab ] = useState(0);
   const isLoading = filteredSongs?.length === 0;
-  
+
   const updateToTopTracks = ()=>{
     setSelectedTab(1);
     const topTrackSongs = originalSongs.filter((song)=> song?.top_track);
     updateFilteredSongs(topTrackSongs);
+    updateSearchedSongs(topTrackSongs);
   }
 
   const updateToForYou = ()=>{
     setSelectedTab(0);
     const forYouSongs = originalSongs.filter((song)=> song?.top_track === false);
     updateFilteredSongs(forYouSongs);
+    updateSearchedSongs(forYouSongs);
   }
 
   useEffect(()=>{
@@ -35,12 +37,7 @@ const Songbar = () => {
                     <button onClick={updateToTopTracks} disabled={isLoading}>Top Tracks</button>
                 </li>
             </ul>
-            <div className='flex items-center py-2 px-3 rounded-lg bg-gray-700'>
-                <input type="text" className='flex-auto text-gray-400 bg-gray-700 outline-none' placeholder='Search Song, Artist'/>
-                <button>
-                    <HiMagnifyingGlass size='30px' className='text-gray-400'/>
-                </button>
-            </div>
+            <Search />
             <div className="flex flex-col grow w-full">
             {
                     isLoading ? (
