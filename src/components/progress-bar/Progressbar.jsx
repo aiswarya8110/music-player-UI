@@ -14,7 +14,7 @@ const Progressbar = ({ currentTime, audioRef }) => {
     }
 
     return (
-        <div className='w-3/4 max-md:w-full h-1 rounded-md bg-gray-900 mt-4 cursor-pointer' ref={progressDiv} onClick={updateCurrentTime}>
+        <div className='w-3/4 max-md:w-full h-1 rounded-md bg-[#00000080] mt-4 cursor-pointer' ref={progressDiv} onClick={updateCurrentTime}>
             <div className='bg-white rounded-md h-1' style={{width: `${width}%`}}/>
         </div>
     )

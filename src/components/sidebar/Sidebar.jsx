@@ -8,7 +8,7 @@ const Sidebar = () => {
             <RiSpotifyFill size='50px'/>
             <span className='font-bold text-lg'>Spotify</span>
         </div>
-        <MdPerson size='30px'/>
+        <MdPerson size='20px'/>
     </div>
   )
 }

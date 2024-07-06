@@ -9,20 +9,28 @@ import { IconContext } from 'react-icons';
 
 const Controls = ({ isPlaying, setNextSong, setPrevSong, playSong, pauseSong }) => {
   return (
-    <div className='flex p-3 items-center justify-between w-3/4 max-md:w-full'>
+    <div className='flex p-3 items-center justify-between w-3/4 max-md:w-full bg'>
         <IconContext.Provider value={{
-          style: {padding: '6px', backgroundColor: '#111827', borderRadius: '100%', cursor: 'pointer'},
+          style: {padding: '6px', backgroundColor: '#00000080', borderRadius: '100%', cursor: 'pointer'},
           size: '30px'
           }}>
            <BsThreeDots />
-        </IconContext.Provider>
-        <div className='flex gap-6 items-center bg-gr'>
-            <TbPlayerTrackPrevFilled onClick={setPrevSong} size='20px' className='cursor-pointer'/>
-            {isPlaying ? <FaCirclePause onClick={pauseSong} size='40px' className='cursor-pointer'/> : <FaCirclePlay onClick={playSong} size='40px' className='cursor-pointer'/>}
-            <TbPlayerTrackNextFilled onClick={setNextSong} size='20px' className='cursor-pointer'/>
+          </IconContext.Provider>
+        <div className='flex gap-6 items-center'>
+
+          <IconContext.Provider value={{color: '#94a3b8', size: '20px', style:{cursor: 'pointer'}}}>
+            <TbPlayerTrackPrevFilled onClick={setPrevSong}/>
+          </IconContext.Provider>
+
+          {isPlaying ? <FaCirclePause onClick={pauseSong} size='40px' className='cursor-pointer'/> : <FaCirclePlay onClick={playSong} size='40px' className='cursor-pointer'/>}
+          
+          <IconContext.Provider value={{color: '#94a3b8', size: '20px', style: {cursor: 'pointer'}}}>
+            <TbPlayerTrackNextFilled onClick={setNextSong}/>
+          </IconContext.Provider>
+
         </div>
         <IconContext.Provider value={{
-          style: {padding: '6px', backgroundColor: '#111827', borderRadius: '100%', cursor: 'pointer'},
+          style: {padding: '6px', backgroundColor: '#00000080', borderRadius: '100%', cursor: 'pointer'},
           size: '30px'
           }}>
           <IoVolumeMediumSharp />
