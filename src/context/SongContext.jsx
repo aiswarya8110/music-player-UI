@@ -59,7 +59,7 @@ export const SongContextProvider = ({ children })=>{
       const songData = await response.json();
       setTimeout(()=>{
         dispatch({type: UPDATE_ORIGINAL_SONGS, payload: songData.data});
-      }, 4000);
+      }, 3000);
     }
 
     const contextValue = {
