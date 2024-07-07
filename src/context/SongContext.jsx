@@ -57,7 +57,9 @@ export const SongContextProvider = ({ children })=>{
     const getSongs = async()=>{
       const response = await fetch(SONGS_API_URL);
       const songData = await response.json();
-      dispatch({type: UPDATE_ORIGINAL_SONGS, payload: songData.data});
+      setTimeout(()=>{
+        dispatch({type: UPDATE_ORIGINAL_SONGS, payload: songData.data});
+      }, 4000);
     }
 
     const contextValue = {
