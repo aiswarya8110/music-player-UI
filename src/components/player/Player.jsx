@@ -7,7 +7,7 @@ const Player = ({ currentSong }) => {
     <>
         <h3 className='font-bold text-3xl'>{currentSong?.name}</h3>
         <p className='text-sm text-gray-400'>{currentSong?.artist}</p>
-        <div className='w-3/4 h-[350px] mt-5 rounded-md max-md:w-full'>
+        <div className='w-3/4 h-[350px] mt-5 max-md:w-full'>
           {!currentSong?.name ? (
               <div className='flex items-center justify-center w-full h-full'>
                 <Bars 
@@ -20,7 +20,7 @@ const Player = ({ currentSong }) => {
           ): (
             <img src={IMAGE_API_URL+`/${currentSong?.cover}`} 
             alt='Cover' 
-            className='w-full h-full object-cover'/>
+            className='w-full h-full object-cover rounded-md'/>
           )}
         </div>
         

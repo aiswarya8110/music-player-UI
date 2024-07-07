@@ -11,7 +11,7 @@ function App() {
   const currentSong = originalSongs[currentSongIndex];
 
   return (
-    <div className={`flex flex-col relative pt-10 h-screen opacity-80 text-white overflow-y-auto transition-all duration-1000 ease-linear bg-transparent max-md:pt-0`} 
+    <div className={`flex flex-col relative pt-10 h-screen opacity-80 text-white overflow-y-auto transition-opacity duration-1000 ease-linear bg-transparent max-md:pt-0`} 
     >
       <Header />
       <main className='flex grow gap-5 w-full max-md:max-w-full max-md:flex-col-reverse max-md:justify-end'>
