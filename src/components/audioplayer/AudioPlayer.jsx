@@ -65,12 +65,12 @@ const AudioPlayer = () => {
         <audio src={currentSong?.url} ref={audioRef} onTimeUpdate={updateCurrentTime} onEnded={handleOnEnd}/>
         <div className='flex flex-col gap-2 w-full max-md:max-w-full'>
           <RiMenu2Fill 
-          className={`hidden self-end text-right text-green-500 transition-all duration-700 max-md:${isMenuOpen ? 'hidden' : 'block'}`}
+          className={`hidden self-end text-right text-green-500 transition-all duration-700 max-md:${isMenuOpen ? 'hidden' : 'flex'}`}
           size='30px'
           onClick={updateIsMenuOpen}
           />
           <IoClose 
-          className={`hidden self-end text-right text-green-500 transition-all duration-700 max-md:${isMenuOpen ? 'block' : 'hidden'}`} 
+          className={`hidden self-end text-right text-green-500 transition-all duration-700 max-md:${isMenuOpen ? 'flex' : 'hidden'}`} 
           size='30px' 
           onClick={updateIsMenuOpen}
           />

@@ -11,17 +11,15 @@ function App() {
   const currentSong = originalSongs[currentSongIndex];
 
   return (
-    <div className={`flex flex-col pt-10 h-screen text-white overflow-y-auto transition-all duration-1000 max-md:pt-0`} 
-    style={{
-      background: currentSong?.accent,
-      // backgroundImage: `linear-gradient(to bottom right, black, ${currentSong?.accent})`
-      }}>
+    <div className={`flex flex-col relative pt-10 h-screen text-white bg-opacity-25 bg-yellow-200 overflow-y-auto transition-all duration-1000 max-md:pt-0`} 
+    >
       <Header />
       <main className='flex grow gap-5 w-full max-md:max-w-full max-md:flex-col-reverse max-md:justify-end'>
         <Sidebar />
         <Songbar />
         <AudioPlayer />
       </main>
+      <div className='absolute top-0 left-0 right-0 bottom-0 bg-[#00000080] h-full w-full z-[-1]'/>
     </div>
   )
 }
