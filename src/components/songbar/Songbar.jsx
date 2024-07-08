@@ -28,7 +28,7 @@ const Songbar = () => {
   },[originalSongs])
 
   return (
-    <div className={`flex flex-col w-[35%] px-6 max-md:w-full max-md:${isMenuOpen ? 'flex' : 'hidden'}`}>
+    <div className={`flex flex-col overflow-y-auto w-[35%] px-6 max-md:w-full max-md:${isMenuOpen ? 'flex' : 'hidden'}`}>
         <div className='w-full flex flex-col grow gap-5 max-md:w-full'>
             <Tabs 
             selectedTab={selectedTab}
